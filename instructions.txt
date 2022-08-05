@@ -1,0 +1,10 @@
+1.create image - docker build -t name location
+2.delete image - docker image rm name/id
+3.list images - docker image ls
+
+3.create container - docker run --name containername -v localLocation:/app:ro -v /app/node_modules -p:hostPort:containerPort imageName/id
+4.list containers - docker ps
+5.delete container - docker rm containerName/id 
+
+6.open ssh - docker exec -it containerName bash
+
