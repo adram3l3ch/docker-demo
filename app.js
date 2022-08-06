@@ -9,9 +9,9 @@ app.use(express.json());
 const postRouter = require("./routes/post");
 const authRouter = require("./routes/auth");
 
-app.get("/", async (req, res) => res.json({ message: "Hello world" }));
-app.use("/posts", postRouter);
-app.use("/auth", authRouter);
+app.get("/api/v1", async (req, res) => res.json({ message: "Hello world" }));
+app.use("/api/v1/posts", postRouter);
+app.use("/api/v1/auth", authRouter);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, async () => {

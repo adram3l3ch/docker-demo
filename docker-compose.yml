@@ -1,28 +1,30 @@
 version: "3.9"
 services:
+    nginx:
+        image: nginx:stable-alpine
+        ports:
+            - 5000:80
+        volumes:
+            - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
     node-app:
         build:
             context: .
-        ports:
-            - "5000:5000"
         volumes:
             - ./:/app
             - /app/node_modules
         environment:
             - PORT=5000
             - MONGO_USER=adra
-            - MONGO_PASSWORD=1234
+            - MONGO_PASSWORD=aanjaneya
         depends_on:
             - mongo
     mongo:
         image: mongo
         environment:
             - MONGO_INITDB_ROOT_USERNAME=adra
-            - MONGO_INITDB_ROOT_PASSWORD=1234
+            - MONGO_INITDB_ROOT_PASSWORD=aanjaneya
         volumes:
             - mongo-db:/data/db
-    redis:
-        image: redis
 
 volumes:
     mongo-db:
